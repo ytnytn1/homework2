@@ -11,15 +11,13 @@ namespace model
     public class Car
     {
         //CarPasport carPasport;
-        public CarPassport carPassport;
+        public CarPassport carPassport { get; }
 
         public Car(string model, string category)
         {
-            
-            //var carPassport = new CarPasport(this) ;
             Model = model;
             Category = category;
-             carPassport = new CarPassport(this);
+            carPassport = new CarPassport(this);
         }
 
         public string Model { get; }
