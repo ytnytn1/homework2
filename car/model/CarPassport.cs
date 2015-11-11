@@ -15,7 +15,7 @@ namespace model
             Car = car;
         }
 
-        public string Owner { get; set; }
+        public Driver Owner { get; set; } 
 
     }
 }

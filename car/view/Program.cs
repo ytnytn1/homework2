@@ -11,12 +11,56 @@ namespace view
     class Program
     {
         static void Main(string[] args)
-        {
-            Car car1;
-            car1 = new Car("2107", "B");
+        {   
+          
+           // Console.OutputEncoding = Encoding.UTF8;
+            var carLada = new Car("2107", "D");
+            carLada.Color = Color.Indigo; // вроде этот цвет похож на баклажановый
+            if (carLada.carPassport.Owner != null)
+                Console.WriteLine(" Владелец машины {0}",carLada.carPassport.Owner.Name);
+            else
+            {
+                Console.WriteLine("У машины еще нет владельца");
+            }
+
+            Console.WriteLine("----------------------------------------");
+
+            var driver = new Driver(new DateTime(1800, 01, 01, 6, 0,0), "Вольдемар") {Category = "BC"};
+
+            try
+            {
+                carLada.ChangeOwner(driver, "o777oo");
+            }
+            catch (MyException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("----------------------------------------");
+
+            driver.Category = driver.Category + "D";
+
+            try
+            {
+                carLada.ChangeOwner(driver, "o777oo");
+                Console.WriteLine("водитель успешно сменен");
+            }
+            catch (MyException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine("----------------------------------------");
+
+            Console.WriteLine("номер машины {1}а: {0}",driver.Car.CarNumber, driver.Name);
+
+            Console.WriteLine("----------------------------------------");
+
+            if (carLada.carPassport.Owner != null)
+                Console.WriteLine("владелец машины {0} - {1}",carLada.Model, carLada.carPassport.Owner.Name);
+
+            Console.ReadKey();
             
-            Console.WriteLine(car1.carPassport.Car.Model);
-            Console.ReadKey();      
 
         }
     }

@@ -28,7 +28,15 @@ namespace model
 
         //public  string Model { get; set; }
 
-        public  int CarNumber { get; private set; }
+        public  string CarNumber { get; private set; }
+
+        public void ChangeOwner(Driver driver, string newCarNumber)
+        {
+            carPassport.Owner = driver;
+            CarNumber = newCarNumber;
+            driver.OwnCar(this);
+
+        }
 
 
 

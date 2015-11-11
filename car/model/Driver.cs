@@ -8,18 +8,32 @@ namespace model
 {
     public class Driver
     {
-        private DateTime _licenseDate;
+       
 
-        private string _name;
+       
 
         public Driver(DateTime licenseDate, string name)
         {
-            _licenseDate = licenseDate;
-            _name = name;
+            LicenseDate = licenseDate;
+            Name = name;
         }
+
+        public string Name { get; }
+
+        public DateTime LicenseDate { get; }
 
         public string Category { get; set; }
 
+        public int Expirience => DateTime.Now.Year - LicenseDate.Year;
 
+        public Car Car { get; private set; }
+
+        public void OwnCar(Car car)
+        {
+            if (Category.Contains(car.Category))
+                Car = car;
+            else throw new MyException(Name + " не обладает категорией " + car.Category);
+        }
+            
     }
 }
