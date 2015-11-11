@@ -42,7 +42,7 @@ namespace view
 
             try
             {
-                carLada.ChangeOwner(driver, "T777AZ");
+                carLada.ChangeOwner(driver, "o777oo");
                 Console.WriteLine("водитель успешно сменен");
             }
             catch (MyException ex)
