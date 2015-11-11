@@ -30,6 +30,7 @@ namespace view
             try
             {
                 carLada.ChangeOwner(driver, "o777oo");
+                Console.WriteLine("водитель успешно сменен");
             }
             catch (MyException ex)
             {
