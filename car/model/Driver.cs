@@ -32,7 +32,7 @@ namespace model
         {
             if (Category.Contains(car.Category))
                 Car = car;
-            else throw new MyException(Name + " не обладает категорией " + car.Category);
+            else throw new MyException(string.Format("{0} не обладает категорией {1} ", Name, car.Category));
         }
             
     }
