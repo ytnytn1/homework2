@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace model
+
+namespace Model
 {
     public class Driver
     {
        
-
-       
-
         public Driver(DateTime licenseDate, string name)
         {
             LicenseDate = licenseDate;
@@ -24,15 +22,29 @@ namespace model
 
         public string Category { get; set; }
 
-        public int Expirience => DateTime.Now.Year - LicenseDate.Year;
+        public int Expirience
+        {
+            get
+            {
+                var span = DateTime.Now - LicenseDate;
+                var expirience = (int)span.TotalDays/365;
+                return expirience;
+            }
+        }
 
         public Car Car { get; private set; }
 
         public void OwnCar(Car car)
         {
             if (Category.Contains(car.Category))
+            {
                 Car = car;
-            else throw new MyException(string.Format("{0} не обладает категорией {1} ", Name, car.Category));
+            }
+
+            else
+            {
+                throw new MyException(string.Format("{0} не обладает категорией {1} ", Name, car.Category));
+            }
         }
             
     }

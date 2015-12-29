@@ -4,9 +4,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using model;
+using Model;
 
-namespace view
+namespace View
 {
     class Program
     {
@@ -17,7 +17,9 @@ namespace view
             var carLada = new Car("2107", "D");
             carLada.Color = Color.Indigo; // вроде этот цвет похож на баклажановый
             if (carLada.carPassport.Owner != null)
+            {
                 Console.WriteLine(" Владелец машины {0}",carLada.carPassport.Owner.Name);
+            }             
             else
             {
                 Console.WriteLine("У машины еще нет владельца");
@@ -25,7 +27,7 @@ namespace view
 
             Console.WriteLine("----------------------------------------");
 
-            var driver = new Driver(new DateTime(1800, 01, 01, 6, 0,0), "Вольдемар") {Category = "BC"};
+            var driver = new Driver(new DateTime(2014, 12, 30), "Вольдемар") {Category = "BC"};
 
             try
             {
@@ -58,10 +60,11 @@ namespace view
             Console.WriteLine("----------------------------------------");
 
             if (carLada.carPassport.Owner != null)
-                Console.WriteLine("владелец машины {0} - {1}",carLada.Model, carLada.carPassport.Owner.Name);
-
-            Console.ReadKey();
+            {
+                Console.WriteLine("владелец машины {0} - {1}", carLada.Model, carLada.carPassport.Owner.Name);
+            }
             
+            Console.ReadKey();            
 
         }
     }

@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace model
+namespace Model
 {
     public class Car
     {
@@ -32,13 +32,18 @@ namespace model
 
         public void ChangeOwner(Driver driver, string newCarNumber)
         {
-            carPassport.Owner = driver;
-            CarNumber = newCarNumber;
             driver.OwnCar(this);
-
+            if (driver.Category.Contains(Category))
+            {
+                carPassport.Owner = driver;
+                CarNumber = newCarNumber;
+            }
+            else
+            {
+                throw new MyException(string.Format("{0} не обладает категорией {1} ", driver.Name, carPassport.Car.Category));
+            }
+            
         }
-
-
 
     }
 }
